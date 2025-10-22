@@ -50,12 +50,13 @@ html_table = html_table.replace(
 )
 
 # ヘッダーサイズ
-html_table = html_table.replace('<th>', '<th style="font-size:16px;">')
+html_table = html_table.replace('<th>', '<th style="font-size:14px;">')
 
 # 数字サイズ
 html_table = html_table.replace('<td>', '<td style="font-size:20px;">')
 
 st.markdown(html_table, unsafe_allow_html=True)
+
 
 
 
