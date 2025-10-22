@@ -1,13 +1,12 @@
 import streamlit as st
 import pandas as pd
 
-st.title("🏌️‍♂️ イーグル会ベット計算機")
-st.markdown("ゴルフのラウンド後に各賞の精算を自動で計算します。")
+# タイトル（大きく）
+st.markdown("<h1 style='font-size:36px'>🏌️‍♂️ イーグル会ベット計算機</h1>", unsafe_allow_html=True)
+st.markdown("<p style='font-size:18px'>ゴルフのラウンド後に各賞の精算を自動で計算します。</p>", unsafe_allow_html=True)
 
-# プレイヤー名固定
-players = ["Alice", "Bob", "Charlie", "David"]
-st.write("プレイヤー：", ", ".join(players))
-st.divider()
+# プレイヤー名を固定
+players = ["A", "B", "C", "D"]
 
 # 結果用データフレーム
 categories = ["優勝", "ベスト", "ドラニヤ", "バーディ", "ストローク"]
@@ -37,15 +36,10 @@ for i, p in enumerate(players):
 # 合計
 results.loc["合計"] = results.sum()
 
-# スタイル設定で数字を大きくする
-styled_results = results.style.set_table_styles([
-    {"selector": "td", "props": [("font-size", "24px")]}  # 数字を24pxに
-])
-
 st.divider()
 st.subheader("💰 計算結果")
-st.dataframe(styled_results.format("{:+,}"))
-
-
-)
+st.dataframe(results.style.format("{:+,}", na_rep="0").set_table_styles(
+    [{'selector':'th','props':[('font-size','18px')]},
+     {'selector':'td','props':[('font-size','18px')]}]
+))
 
