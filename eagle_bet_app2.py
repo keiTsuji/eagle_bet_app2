@@ -4,7 +4,7 @@ import pandas as pd
 st.markdown("<h2 style='font-size:30px'>🏌️‍♂️ イーグル会ベット計算機</h2>", unsafe_allow_html=True)
 
 # プレイヤー名固定
-players = ["辻 啓一", "菅井雅之", "木村立児", "霜田邦明"]
+players = ["辻", "菅井", "木村", "霜田"]
 
 st.divider()
 
@@ -22,7 +22,7 @@ for p in players:
 awards = [("ベスト", 200), ("ドラニヤ", 300), ("バーディ", 500)]
 for cat, value in awards:
     st.subheader(f"{cat}（単価 {value}円）")
-    inputs = [st.number_input(f"{p} の {cat} 数字", min_value=0, value=0) for p in players]
+    inputs = [st.number_input(f"{p} の {cat} 数", min_value=0, value=0) for p in players]
     for i, p in enumerate(players):
         others_sum = sum(inputs) - inputs[i]
         results.loc[cat, p] = (inputs[i]*3 - others_sum) * value
@@ -56,6 +56,7 @@ html_table = html_table.replace('<th>', '<th style="font-size:14px;">')
 html_table = html_table.replace('<td>', '<td style="font-size:20px;">')
 
 st.markdown(html_table, unsafe_allow_html=True)
+
 
 
 
