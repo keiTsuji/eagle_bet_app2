@@ -40,9 +40,22 @@ results.loc["合計"] = results.sum()
 st.divider()
 st.subheader("💰 計算結果")
 
-# HTMLで表を作り数字を大きく表示
+# HTMLで表を作成
 html_table = results.to_html(classes='table', border=1, justify='center')
-html_table = html_table.replace('<table border="1" class="dataframe table">', 
-                                '<table border="1" class="dataframe table" style="font-size:24px; text-align:center;">')
+
+# <th>（列名・ヘッダー）は18px、<td>（数字部分）は22px
+html_table = html_table.replace(
+    '<table border="1" class="dataframe table">',
+    '<table border="1" class="dataframe table" style="text-align:center;">'
+)
+
+# ヘッダーサイズ
+html_table = html_table.replace('<th>', '<th style="font-size:18px;">')
+
+# 数字サイズ
+html_table = html_table.replace('<td>', '<td style="font-size:22px;">')
+
 st.markdown(html_table, unsafe_allow_html=True)
+
+
 
