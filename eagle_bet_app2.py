@@ -1,13 +1,17 @@
 import streamlit as st
 import pandas as pd
+
+
 # CSSで number_input の数字だけ大きくする
 st.markdown("""
 <style>
-div[data-baseweb="numberinput"] input {
-    font-size: 24px;  /* 数字部分を大きく */
+input[type=number] {
+    font-size: 24px !important;  /* 数字部分を大きく */
 }
 </style>
 """, unsafe_allow_html=True)
+
+
 
 st.markdown("<h2 style='font-size:30px'>🏌️‍♂️ イーグル会ベット計算機</h2>", unsafe_allow_html=True)
 
@@ -64,6 +68,7 @@ html_table = html_table.replace('<th>', '<th style="font-size:14px;">')
 html_table = html_table.replace('<td>', '<td style="font-size:20px;">')
 
 st.markdown(html_table, unsafe_allow_html=True)
+
 
 
 
