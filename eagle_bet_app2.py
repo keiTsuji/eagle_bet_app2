@@ -45,3 +45,4 @@ html_table = results.to_html(classes='table', border=1, justify='center')
 html_table = html_table.replace('<table border="1" class="dataframe table">', 
                                 '<table border="1" class="dataframe table" style="font-size:24px; text-align:center;">')
 st.markdown(html_table, unsafe_allow_html=True)
+
