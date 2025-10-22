@@ -29,7 +29,7 @@ for cat, value in awards:
 
 # ストローク
 st.subheader("ストローク（単価100円）")
-scores = [st.number_input(f"{p} のスコア", min_value=0, value=0) for p in players]
+scores = [st.number_input(f"{p} のスコア", min_value=0, value=72) for p in players]
 for i, p in enumerate(players):
     diff_sum = sum(scores[i] - scores[j] for j in range(len(players)) if j != i)
     results.loc["ストローク", p] = -diff_sum * 100
@@ -56,6 +56,7 @@ html_table = html_table.replace('<th>', '<th style="font-size:14px;">')
 html_table = html_table.replace('<td>', '<td style="font-size:20px;">')
 
 st.markdown(html_table, unsafe_allow_html=True)
+
 
 
 
