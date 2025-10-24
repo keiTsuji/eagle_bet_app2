@@ -9,6 +9,13 @@ st.markdown("""
 input[type=number] {
     font-size: 24px !important;
 }
+table.dataframe td {
+    font-size: 20px;       /* 数字サイズ */
+}
+table.dataframe th {
+    font-size: 16px;       /* ヘッダーサイズ */
+    background-color:#f5deb3;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -18,8 +25,8 @@ input[type=number] {
 st.markdown("""
 <div style='
     display:flex;
-    justify-content:center; /* 縦中央 */
-    align-items:center;     /* 横中央 */
+    justify-content:center;
+    align-items:center;
     height:120px;
     background-color:#e0f7fa;
     border-radius:15px;
@@ -27,8 +34,6 @@ st.markdown("""
     <h1 style='font-size:28px; color:#00796b; margin:0; line-height:1;'>🏌️‍♂️イーグル会ベット計算機🏌️‍♂️</h1>
 </div>
 """, unsafe_allow_html=True)
-
-
 
 # -------------------------
 # プレイヤー名と結果用データフレーム
@@ -74,21 +79,12 @@ st.divider()
 st.subheader("💰 計算結果")
 
 # -------------------------
-# HTMLで表を装飾
+# HTMLで表を装飾（文字色はテーマに任せる）
 # -------------------------
-html_table = results.to_html(classes='table', border=1, justify='center')
+html_table = results.to_html(classes='dataframe table', border=1, justify='center')
 html_table = html_table.replace(
     '<table border="1" class="dataframe table">',
     '<table border="1" class="dataframe table" style="text-align:center; background-color:#fff8dc; border-radius:10px;">'
 )
-html_table = html_table.replace('<th>', '<th style="font-size:16px; background-color:#f5deb3;">')
-html_table = html_table.replace('<td>', '<td style="font-size:20px; color:black;">')  # ← ここを修正
 
-
-
-
-
-
-
-
-
+st.markdown(html_table, unsafe_allow_html=True)
